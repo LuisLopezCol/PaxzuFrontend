@@ -1,0 +1,263 @@
+<!------------------------------- Banner ------------------------------->
+<div class="banner p-0 m-0 d-flex justify-content-center align-items-center bg">
+    <h1 class="">The Stars Wars API</h1>
+</div>
+<div id="main_container" class="bg-dark">
+    <div class="w-100 center">
+        <form class="search-bar center col-lg-5 col-md-8 col-sm-12 my-5">
+            <input #search class="form-control m4" type="search" placeholder="¿Which ID are you looking for?"
+                aria-label="Search">
+            <button #searchbutton class="btn fs-6 links me-3" (click)="getCharacter(search.value)" type="button"
+                data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+    <div class="d-flex justify-content-center align-content-center">
+        <button (click)="getPlanets()" type="button" class="btn btn-danger ms-4">Planet</button>
+    </div>
+    <div class="d-flex justify-content-center align-content-center my-5">
+        <button (click)="getCharacters()" type="button" class="btn btn-success me-4">People</button>
+        <button (click)="getCharacterSortMass()" type="button" class="btn btn-success me-4">Sort by
+            Mass</button>
+        <button (click)="getCharacterSortHeight()" type="button" class="btn btn-success me-4">Sort by
+            Height</button>
+        <button (click)="getCharacterSortName()" type="button" class="btn btn-success me-4">Sort by
+            Name</button>
+    </div>
+    <!------------------------------- People ------------------------------->
+    <div *ngIf="toWatch == 'characters'" id="cards">
+        <div class="card" *ngFor="let character of listCharacters | paginate: { itemsPerPage: 50, currentPage: page}">
+            <h3 class="mainHeaderText d-flex justify-content-center  my-4 p-0">
+                {{character.name}}
+            </h3>
+            <div class="card-body d-flex flex-wrap">
+                <div class="w-50 px-2 genre">
+                    <h4 class=" m-0">Height:</h4>
+                    <h5 class="contentText">{{character.height}} cm</h5>
+                </div>
+                <div class="w-50 px-2 platform">
+                    <h4 class=" m-0">Mass:</h4>
+                    <h5 class="contentText">{{character.mass}} kg</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Hair Color:</h4>
+                    <h5 class="contentText">{{character.hair_color}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Skin Color:</h4>
+                    <h5 class="contentText">{{character.eye_color}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Birth Year:</h4>
+                    <h5 class="contentText">{{character.birth_year}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Gender:</h4>
+                    <h5 class="contentText">{{character.gender}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Homeworld:</h4>
+                    <a href={{character.homeworld}} class="links contentText" target="_blank">
+                        Check Web</a>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Created:</h4>
+                    <h5 class="contentText">{{character.created}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="center flex-row">
+        <button type="button" class="btn btn-success mx-3" (click)="getCharacters()">PREV</button>
+        <button type="button" class="btn btn-success mx-3">NEXT</button>
+    </div> -->
+    <!-- Sort mass -->
+    <div *ngIf="toWatch == 'sortMAss'" id="cardsMass">
+        <div class="cardMass" *ngFor="let characterMass of massCharacter ">
+            <h3 class="mainHeaderText d-flex justify-content-center  my-4 p-0">
+                {{characterMass.name}}
+            </h3>
+            <div class="card-body d-flex flex-wrap">
+                <div class="w-50 px-2 genre">
+                    <h4 class=" m-0">Height:</h4>
+                    <h5 class="contentText">{{characterMass.height}} cm</h5>
+                </div>
+                <div class="w-50 px-2 platform">
+                    <h4 class=" m-0">Mass:</h4>
+                    <h5 class="contentText">{{characterMass.mass}} kg</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Hair Color:</h4>
+                    <h5 class="contentText">{{characterMass.hair_color}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Skin Color:</h4>
+                    <h5 class="contentText">{{characterMass.eye_color}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Birth Year:</h4>
+                    <h5 class="contentText">{{characterMass.birth_year}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Gender:</h4>
+                    <h5 class="contentText">{{characterMass.gender}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Homeworld:</h4>
+                    <a href={{characterMass.homeworld}} class="links contentText" target="_blank">
+                        Check Web</a>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Created:</h4>
+                    <h5 class="contentText">{{characterMass.created}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sort height -->
+    <div *ngIf="toWatch == 'sortHeight'" id="cardsMass">
+        <div class="cardMass" *ngFor="let characterHeight of heightCharacter ">
+            <h3 class="mainHeaderText d-flex justify-content-center  my-4 p-0">
+                {{characterHeight.name}}
+            </h3>
+            <div class="card-body d-flex flex-wrap">
+                <div class="w-50 px-2 genre">
+                    <h4 class=" m-0">Height:</h4>
+                    <h5 class="contentText">{{characterHeight.height}} cm</h5>
+                </div>
+                <div class="w-50 px-2 platform">
+                    <h4 class=" m-0">Mass:</h4>
+                    <h5 class="contentText">{{characterHeight.mass}} kg</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Hair Color:</h4>
+                    <h5 class="contentText">{{characterHeight.hair_color}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Skin Color:</h4>
+                    <h5 class="contentText">{{characterHeight.eye_color}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Birth Year:</h4>
+                    <h5 class="contentText">{{characterHeight.birth_year}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Gender:</h4>
+                    <h5 class="contentText">{{characterHeight.gender}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Homeworld:</h4>
+                    <a href={{characterHeight.homeworld}} class="links contentText" target="_blank">
+                        Check Web</a>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Created:</h4>
+                    <h5 class="contentText">{{characterHeight.created}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sort name -->
+    <div *ngIf="toWatch == 'sortName'" id="cards">
+        <div class="card" *ngFor="let characterName of nameCharacter ">
+            <h3 class="mainHeaderText d-flex justify-content-center  my-4 p-0">
+                {{characterName.name}}
+            </h3>
+            <div class="card-body d-flex flex-wrap">
+                <div class="w-50 px-2 genre">
+                    <h4 class=" m-0">Height:</h4>
+                    <h5 class="contentText">{{characterName.height}} cm</h5>
+                </div>
+                <div class="w-50 px-2 platform">
+                    <h4 class=" m-0">Mass:</h4>
+                    <h5 class="contentText">{{characterName.mass}} kg</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Hair Color:</h4>
+                    <h5 class="contentText">{{characterName.hair_color}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Skin Color:</h4>
+                    <h5 class="contentText">{{characterName.eye_color}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Birth Year:</h4>
+                    <h5 class="contentText">{{characterName.birth_year}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Gender:</h4>
+                    <h5 class="contentText">{{characterName.gender}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Homeworld:</h4>
+                    <a href={{characterName.homeworld}} class="links contentText" target="_blank">
+                        Check Web</a>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Created:</h4>
+                    <h5 class="contentText">{{characterName.created}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------------------------------- Planet ------------------------------->
+    <div *ngIf="toWatch == 'planets'" id="cardsPlanets">
+        <div class="cardPlanet" *ngFor="let planet of listPlanets ">
+            <h4>&rbrace;</h4>
+            <h4 class="mainHeaderText d-flex justify-content-start  ps-4">
+                {{planet.name}}: [
+            </h4>
+            <div class="card-body d-flex flex-wrap justify-content-start"
+                *ngFor="let resident of planet.residents ; let i=index">
+                <h5 class="contentText">&lt; {{resident}} &gt;,</h5> <br>
+            </div>
+            <h4 class="ps-4">]</h4>
+            <h4>&lbrace;</h4>
+        </div>
+    </div>
+
+    <!------------------------------- Single Character ------------------------------->
+    <div *ngIf="toWatch == 'character'">
+        <div class="card" *ngFor="let oneChararter of singleCharacter">
+            <h3 class="mainHeaderText d-flex justify-content-center  my-4 p-0">
+                {{oneChararter.name}}
+            </h3>
+            <div class=" card-body d-flex flex-wrap">
+                <div class="w-50 px-2 genre">
+                    <h4 class=" m-0">Height:</h4>
+                    <h5 class="contentText">{{oneChararter.height}} cm</h5>
+                </div>
+                <div class="w-50 px-2 platform">
+                    <h4 class=" m-0">Mass:</h4>
+                    <h5 class="contentText">{{oneChararter.mass}} kg</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Hair Color:</h4>
+                    <h5 class="contentText">{{oneChararter.hair_color}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Skin Color:</h4>
+                    <h5 class="contentText">{{oneChararter.eye_color}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Birth Year:</h4>
+                    <h5 class="contentText">{{oneChararter.birth_year}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Gender:</h4>
+                    <h5 class="contentText">{{oneChararter.gender}}</h5>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Homeworld:</h4>
+                    <a href={{oneChararter.homeworld}} class="links contentText" target="_blank">
+                        Check Web</a>
+                </div>
+                <div class="w-50 px-2 publisher">
+                    <h4 class=" m-0">Created:</h4>
+                    <h5 class="contentText">{{oneChararter.created}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    i
+</div>

@@ -1,0 +1,57 @@
+/* --------------- Navbar ---------------- */
+#topHeader {
+    background-image: url(../../../assets/img/carousel_3.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 2em;
+    color: var(--mainWhite);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: 600;
+    -webkit-text-stroke: 0.5px black;
+}
+
+.navbar {
+    /* position: relative; */
+    box-shadow: 0 2px 2px rgb(0 0 0 / 15%);
+    z-index: 1;
+    height: 75px;
+}
+
+
+.navbar-logo {
+    display: flex;
+    justify-content: start;
+    align-content: flex-start;
+    height: 2.5em;
+
+}
+
+.form-control {
+    border-color: transparent;
+    background-color: var(--mainGrey);
+}
+
+#navbarSupportedContent {
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+.navbar-nav p {
+    font-size: 12px;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 01em;
+}
+
+.nav-icon {
+    font-size: 2rem;
+}

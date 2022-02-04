@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@800&display=swap');
+
+#main_container {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* -----------------Banner----------------- */
+.banner {
+    background-image: url(../../../assets/img/header.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 500px !important;
+
+}
+
+.banner h1 {
+    color: rgb(36, 40, 47);
+    font-weight: 900;
+    font-size: 6.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    -webkit-text-stroke: 2px white;
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Cards */
+#cards {
+    background: rgb(36, 40, 47);
+    padding: 3rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    grid-gap: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.card {
+    width: 18rem;
+    height: 25rem;
+    background: rgb(36, 40, 47);
+    border-radius: 10px;
+    border: 1px solid #fff;
+}
+
+.card h3 {
+    color: #fff;
+    line-height: 35px;
+}
+
+.card h4 {
+    color: white;
+    font-size: 15px;
+}
+
+.card h5 {
+    color: rgb(158, 158, 158);
+    font-size: 16px;
+}
+
+#cardsMass {
+    background: rgb(36, 40, 47);
+    padding: 3rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    grid-gap: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.cardMass {
+    width: 18rem;
+    height: 25rem;
+    background: rgb(36, 40, 47);
+    border-radius: 10px;
+    border: 1px solid #fff;
+}
+
+.cardMass h3 {
+    color: #fff;
+    line-height: 35px;
+}
+
+.cardMass h4 {
+    color: white;
+    font-size: 15px;
+}
+
+.cardMass h5 {
+    color: rgb(158, 158, 158);
+    font-size: 16px;
+}
+
+#cardsPlanets {
+    background: rgb(36, 40, 47);
+    padding: 3rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.cardPlanet {
+    width: 100%;
+    height: fit-content;
+    background: rgb(36, 40, 47);
+    border-radius: 10px;
+    border: 1px solid #fff;
+    padding: 30px;
+}
+
+.cardPlanet h4 {
+    color: white;
+    font-size: 24px;
+}
+
+.cardPlanet h5 {
+    color: rgb(211, 211, 211);
+    font-size: 18px;
+    padding-left: 30px;
+}
+
+.mainHeaderText {
+    font-size: var(--modalCard-mainHeader);
+    font-weight: 800 !important;
+    color: var(--mainPurple);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.subHeaderText {
+    font-size: var(--modalCard-subHeader);
+    color: var(--mainDarkGray);
+}
+
+/* -Buttons- */
+.btn-danger, .btn-success {
+    width: 200px;
+    height: 50px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* -Search Bar- */
+.nav-item:active, .btn:active, .filter-genre:active {
+    transform: scale(0.7);
+}
+
+.search-bar {
+    display: inline-block;
+    position: relative;
+}
+
+.search-bar input {
+    padding-right: 4.6em;
+}
+
+.search-bar button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4.4em;
+}
