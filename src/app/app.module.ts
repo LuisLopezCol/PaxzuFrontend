@@ -3,10 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 
-// ----------------- FIREBASE
-// import { FirebaseTSApp } from 'firebasets/firebasetsApp/firebaseTSApp';
-import { AngularFireModule} from '@angular/fire/compat';
-import { environment } from 'src/environments/environment';
+// import { AngularFireModule} from '@angular/fire/compat';
+// import { environment } from 'src/environments/environment';
 
 // ----------------- DATA FETCH
 import { HttpClientModule } from '@angular/common/http';
@@ -45,7 +43,6 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]
